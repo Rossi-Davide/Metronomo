@@ -4,9 +4,13 @@ using UnityEngine;
 using TMPro;
 using System;
 using UnityEngine.Experimental.Rendering.Universal;
+
 public class GameManager : MonoBehaviour
 {
 
+    float bpmMetronome= -1;
+
+    //text input field for bpm
     public GameObject bpmLabel;
 
     public BPM _bpm;
@@ -32,97 +36,6 @@ public class GameManager : MonoBehaviour
     private int light4Counter, light8Counter, light16Counter;
 
 
-
-
-    public void SetBPM(float bpm)
-    {
-
-        bpmLabel.GetComponent<TMP_InputField>().text = bpm.ToString();
-
-    }
-
-    public void UpToFive()
-    {
-
-        bpmLabel.GetComponent<TMP_InputField>().text = (_bpm.bpm+5).ToString();
-        StartMetronome();
-
-    }
-
-    public void DownToFive()
-    {
-
-        bpmLabel.GetComponent<TMP_InputField>().text = (_bpm.bpm - 5).ToString();
-        StartMetronome();
-
-    }
-
-    public void StartMetronome()
-    {
-        try
-        {
-            string bpmString = bpmLabel.GetComponent<TMP_InputField>().text;
-
-            float bpms = 0;
-
-            if (string.IsNullOrEmpty(bpmString))
-            {
-                throw new Exception("Empty pharameter in the bpm field");
-            }
-
-
-            try
-            {
-                bpms = float.Parse(bpmString);
-            }catch(Exception ex)
-            {
-                throw new Exception("Can't use decimal values or strings as bpm");
-            }
-
-
-            if (bpms > 200)
-            {
-                bpmLabel.GetComponent<TMP_InputField>().text = "200";
-
-                throw new Exception("Can't use values bigger than 200");
-
-            }
-
-            if (bpms < 0)
-            {
-                bpmLabel.GetComponent<TMP_InputField>().text = "0";
-
-                throw new Exception("Can't use values lower than 0");
-
-            }
-
-
-            _bpm.bpm = bpms;
-
-            soundPlayer.power = true;
-            
-        }catch(Exception ex)
-        {
-            ThrowError(ex);
-        }
-    }
-
-    public void InterruptMetronome()
-    {
-        try
-        {
-            soundPlayer.power = false;
-
-            PerformShutdown();
-
-            ResetCountersLights();
-        }
-        catch(Exception ex)
-        {
-            ThrowError(ex);
-        }
-    }
-
     private void Start()
     {
         quarter.SetActive(true);
@@ -131,94 +44,13 @@ public class GameManager : MonoBehaviour
     }
 
 
-    private void ThrowError(Exception ex)
-    {
-        errorText.text = ex.Message;
-        errorTextAnim.Play("ErrorAnimation");
-    }
-
-
-    public void OneToFour()
-    {
-        lightSwitches.position = positions[0].position;
-
-        soundPlayer.quarter = true;
-        soundPlayer.eigth = false;
-        soundPlayer.sixteenth = false;
-
-
-        quarter.SetActive(true);
-        eigth.SetActive(false);
-        sixteeth.SetActive(false);
-
-        PerformShutdown();
-
-        ResetCountersLights();
-
-        BPM._beatCountFull = 1;
-        BPM._beatCountD8 = 1;
-        BPM._beatCountD16 = 1;
-    }
-
-    public void OneToEight()
-    {
-        lightSwitches.position = positions[1].position;
-
-        soundPlayer.quarter = false;
-        soundPlayer.eigth = true;
-        soundPlayer.sixteenth = false;
-
-
-        quarter.SetActive(false);
-        eigth.SetActive(true);
-        sixteeth.SetActive(false);
-
-        PerformShutdown();
-
-        ResetCountersLights();
-
-        BPM._beatCountFull = 1;
-        BPM._beatCountD8 = 1;
-        BPM._beatCountD16 = 1;
-    }
-
-    public void OneToSixteen()
-    {
-        lightSwitches.position = positions[2].position;
-
-        soundPlayer.quarter = false;
-        soundPlayer.eigth = false;
-        soundPlayer.sixteenth = true;
-
-
-        quarter.SetActive(false);
-        eigth.SetActive(false);
-        sixteeth.SetActive(true);
-
-        PerformShutdown();
-
-        ResetCountersLights();
-
-        BPM._beatCountFull = 1;
-        BPM._beatCountD8 = 1;
-        BPM._beatCountD16 = 1;
-    }
-
-
-    private void ResetCountersLights()
-    {
-        light4Counter = 0;
-        light8Counter = 0;
-        light16Counter = 0;
-    }
-
     private void Update()
     {
-        if (soundPlayer.power)
+        if (soundPlayer.Power)
         {
-            if (soundPlayer.quarter)
+            if (soundPlayer.Quarter)
             {
-                if (BPM._beatFull)
+                if (BPM.BeatFull)
                 {
                     quarterLights[light4Counter].SetActive(true);
 
@@ -239,9 +71,9 @@ public class GameManager : MonoBehaviour
                     }
 
                 }
-            }else if (soundPlayer.eigth)
+            }else if (soundPlayer.Eigth)
             {
-                if (BPM._beatD8)
+                if (BPM.BeatD8)
                 {
                     eightLights[light8Counter].SetActive(true);
 
@@ -264,7 +96,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (BPM._beatD16)
+                if (BPM.BeatD16)
                 {
                     sixteenLights[light16Counter].SetActive(true);
 
@@ -285,12 +117,213 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-        }
-
-       
+        }    
     }
 
 
+    //method called by the bpms slider
+    public void SliderSetBPM(float bpm)
+    {
+
+        bpmMetronome = bpm;
+        bpmLabel.GetComponent<TMP_InputField>().text = bpmMetronome.ToString();
+
+    }
+
+    //method called by the bpms input text field
+    public void InputTextFieldSetBPM(string bpm)
+    {
+        try{
+
+            if(string.IsNullOrEmpty(bpm)){
+
+                throw new Exception("The bpm field cannot be empty");
+            }
+
+            try
+            {
+                bpmMetronome = float.Parse(bpm);
+            }catch(Exception ex)
+            {
+                throw new Exception("Can't use decimal values or strings as bpm");
+            }
+
+
+            if (bpmMetronome > 200)
+            {
+                bpmMetronome = 200;
+                bpmLabel.GetComponent<TMP_InputField>().text = bpmMetronome.ToString();
+
+                throw new Exception("Can't use values bigger than 200");
+
+            }
+
+            if (bpmMetronome< 0)
+            {
+                bpmMetronome = 0;
+                bpmLabel.GetComponent<TMP_InputField>().text = bpmMetronome.ToString();
+
+                throw new Exception("Can't use values lower than 0");
+
+            }
+        }catch(Exception ex){
+
+            ThrowError(ex);
+
+        }
+        
+
+    }
+
+    #region Buttons 5
+    public void UpToFive()
+    {
+
+        bpmMetronome += 5;
+        bpmLabel.GetComponent<TMP_InputField>().text = bpmMetronome.ToString();
+        StartMetronome();
+
+    }
+
+    public void DownToFive()
+    {
+        bpmMetronome -= 5;
+        bpmLabel.GetComponent<TMP_InputField>().text = bpmMetronome.ToString();
+        StartMetronome();
+
+    }
+
+    #endregion
+
+    public void StartMetronome()
+    {
+        try
+        {
+            
+            //No parameter ever specified
+            if (bpmMetronome == -1)
+            {
+                throw new Exception("You haven't set a parameter in the bpm field");
+            }
+
+            _bpm.Bpm = bpmMetronome;
+
+            soundPlayer.Power = true;
+
+            
+            
+        }catch(Exception ex)
+        {
+            ThrowError(ex);
+        }
+    }
+
+    public void InterruptMetronome()
+    {
+        try
+        {
+            soundPlayer.Power = false;
+
+            PerformShutdown();
+
+            ResetCountersLights();
+        }
+        catch(Exception ex)
+        {
+            ThrowError(ex);
+        }
+    }
+
+    
+
+    //general method used to display error messages on the screen
+    private void ThrowError(Exception ex)
+    {
+        errorText.text = ex.Message;
+        errorTextAnim.Play("ErrorAnimation");
+    }
+
+
+    #region NoteTransition switching methods
+    public void OneToFour()
+    {
+        lightSwitches.position = positions[0].position;
+
+        soundPlayer.Quarter = true;
+        soundPlayer.Eigth = false;
+        soundPlayer.Sixteenth = false;
+
+
+        quarter.SetActive(true);
+        eigth.SetActive(false);
+        sixteeth.SetActive(false);
+
+        PerformShutdown();
+
+        ResetCountersLights();
+
+        BPM.beatCountFull = 1;
+        BPM.beatCountD8 = 1;
+        BPM.beatCountD16 = 1;
+    }
+
+    public void OneToEight()
+    {
+        lightSwitches.position = positions[1].position;
+
+        soundPlayer.Quarter = false;
+        soundPlayer.Eigth = true;
+        soundPlayer.Sixteenth = false;
+
+
+        quarter.SetActive(false);
+        eigth.SetActive(true);
+        sixteeth.SetActive(false);
+
+        PerformShutdown();
+
+        ResetCountersLights();
+
+        BPM.beatCountFull = 1;
+        BPM.beatCountD8 = 1;
+        BPM.beatCountD16 = 1;
+    }
+
+    public void OneToSixteen()
+    {
+        lightSwitches.position = positions[2].position;
+
+        soundPlayer.Quarter = false;
+        soundPlayer.Eigth = false;
+        soundPlayer.Sixteenth = true;
+
+
+        quarter.SetActive(false);
+        eigth.SetActive(false);
+        sixteeth.SetActive(true);
+
+        PerformShutdown();
+
+        ResetCountersLights();
+
+        BPM.beatCountFull = 1;
+        BPM.beatCountD8 = 1;
+        BPM.beatCountD16 = 1;
+    }
+
+
+    //resets counters of all the blocks in the scene
+    private void ResetCountersLights()
+    {
+        light4Counter = 0;
+        light8Counter = 0;
+        light16Counter = 0;
+    }
+
+    
+
+
+    //shuts down every light in the scene
     private void PerformShutdown()
     {
         foreach(GameObject g in quarterLights)
@@ -308,5 +341,7 @@ public class GameManager : MonoBehaviour
             g.SetActive(false);
         }
     }
+
+    #endregion
 }
 

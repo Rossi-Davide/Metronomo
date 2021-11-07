@@ -9,51 +9,59 @@ public class PlaySoundsOnBeat : MonoBehaviour
 
     public AudioSource tap, tick;
 
-    public bool power = false;
+    public bool Power{set; get;}
 
-    public bool quarter = true, eigth, sixteenth; 
+    public bool Quarter{set; get;}
+    public bool  Eigth{set; get;}
+    public bool Sixteenth{ set; get;}
+     
     // Start is called before the first frame update
     void Start()
     {
-        BPM._beatCountFull = 1;
-        BPM._beatCountD8 = 1;
-        BPM._beatCountD16 = 1;
+        Power = false;
+        Quarter = true;
+        BPM.beatCountFull = 1;
+        BPM.beatCountD8 = 1;
+        BPM.beatCountD16 = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (power)
+        if (Power)
         {
-            if (quarter)
+            if (Quarter)
             {
                 
-                if (BPM._beatFull && BPM._beatCountFull == 2)
+                
+                if (BPM.BeatFull && BPM.beatCountFull == 2)
                 {
 
                    
                     tap.Play();
                 }
-                else if (BPM._beatFull)
+                else if (BPM.BeatFull)
                 {
-
+                    
                    
                     tick.Play();
                 }
+
+                
             }
-            else if (eigth)
+            else if (Eigth)
             {
                 
-                if (BPM._beatD8 && (BPM._beatCountD8 == 2 || BPM._beatCountD8 == 4|| BPM._beatCountD8 == 6|| BPM._beatCountD8 == 8))
+                if (BPM.BeatD8 && (BPM.beatCountD8 == 2 || BPM.beatCountD8 == 4|| BPM.beatCountD8 == 6|| BPM.beatCountD8 == 8))
                 {
                     tap.Play();
                 }
                
             }
-            else if (sixteenth)
+            else if (Sixteenth)
             {
                 
-                if (BPM._beatD16 && (BPM._beatCountD16 == 2 || BPM._beatCountD16 == 6 || BPM._beatCountD16 == 10 || BPM._beatCountD16 == 14))
+                if (BPM.BeatD16 && (BPM.beatCountD16 == 2 || BPM.beatCountD16 == 6 || BPM.beatCountD16 == 10 || BPM.beatCountD16 == 14))
                 {
 
                     tap.Play();
@@ -67,9 +75,9 @@ public class PlaySoundsOnBeat : MonoBehaviour
         }
         else
         {
-            BPM._beatCountFull = 1;
-            BPM._beatCountD8 = 1;
-            BPM._beatCountD16 = 1;
+            BPM.beatCountFull = 1;
+            BPM.beatCountD8 = 1;
+            BPM.beatCountD16 = 1;
         }
         
         

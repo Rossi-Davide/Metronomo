@@ -6,17 +6,36 @@ public class BPM : MonoBehaviour
 {
     private static BPM bpmInstance;
 
+    private float _bpmSystem;
     
-    public float bpm;
+    public float Bpm{
 
-    private float beatInterval, beatTimer, beatIntervalD8, beatTimerD8, beatIntervalD16,beatTimerD16;
+        set
+        { 
+            _beatInterval = 60 / value;
+        _beatIntervalD8 = _beatInterval / 2;
+        _beatIntervalD16 = _beatInterval / 4;
 
-    public static bool _beatFull, _beatD8,_beatD16;
+        _bpmSystem = value;
+        }
 
-    public static int _beatCountFull, _beatCountD8,_beatCountD16;
+        get{ return _bpmSystem; }
+    }
+
+    //the duration of a tick in seconds
+    private float _beatInterval;
+
+    //timers and submultiples
+    private float _beatTimer, _beatIntervalD8, _beatTimerD8, _beatIntervalD16,_beatTimerD16;
+
+    public static bool BeatFull{set; get;}
+    public static bool BeatD8{set; get;} 
+    public static bool BeatD16{set; get;}
+
+    public static int beatCountFull, beatCountD8,beatCountD16;
 
     
-
+    //singleton
     private void Awake()
     {
         if(bpmInstance != null && bpmInstance != this)
@@ -30,11 +49,8 @@ public class BPM : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -47,56 +63,59 @@ public class BPM : MonoBehaviour
 
     void BeatDetection()
     {
-        _beatFull = false;
-        beatInterval = 60 / bpm;
-        beatTimer += Time.deltaTime;
 
-        if(beatTimer>= beatInterval)
+        
+        BeatFull = false;
+        
+        _beatTimer += Time.deltaTime;
+
+        //genereates a tick
+        if(_beatTimer>= _beatInterval)
         {
-            beatTimer -= beatInterval;
-            _beatFull = true;
+            _beatTimer -= _beatInterval;
+            BeatFull = true;
 
             
 
-            _beatCountFull++;
+            beatCountFull++;
            
           
-            if (_beatCountFull > 4)
+            if (beatCountFull > 4)
             {
-                _beatCountFull = 1;
+                beatCountFull = 1;
             }
         }
 
-        _beatD8 = false;
-        beatIntervalD8 = beatInterval / 2;
-        beatTimerD8 += Time.deltaTime;
+        BeatD8 = false;
+        
+        _beatTimerD8 += Time.deltaTime;
 
-        if(beatTimerD8>= beatIntervalD8)
+        if(_beatTimerD8>= _beatIntervalD8)
         {
-            beatTimerD8 -= beatIntervalD8;
-            _beatD8 = true;
-            _beatCountD8++;
+            _beatTimerD8 -= _beatIntervalD8;
+            BeatD8 = true;
+            beatCountD8++;
 
-            if (_beatCountD8 > 8)
+            if (beatCountD8 > 8)
             {
-                _beatCountD8 = 1;
+                beatCountD8 = 1;
             }
 
         }
 
-        _beatD16 = false;
-        beatIntervalD16 = beatInterval / 4;
-        beatTimerD16 += Time.deltaTime;
+        BeatD16 = false;
+        
+        _beatTimerD16 += Time.deltaTime;
 
-        if (beatTimerD16 >= beatIntervalD16)
+        if (_beatTimerD16 >= _beatIntervalD16)
         {
-            beatTimerD16 -= beatIntervalD16;
-            _beatD16 = true;
-            _beatCountD16++;
+            _beatTimerD16 -= _beatIntervalD16;
+            BeatD16 = true;
+            beatCountD16++;
 
-            if (_beatCountD16 > 16)
+            if (beatCountD16 > 16)
             {
-                _beatCountD16 = 1;
+                beatCountD16 = 1;
             }
 
         }
