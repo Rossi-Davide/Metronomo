@@ -2,3 +2,5 @@ Base path: '/Volumes/Crucial X6/Applications/2020.3.19f1/Unity.app/Contents', pl
 Cmd: initializeCompiler
 
 Cmd: shutdown
+
+Quitting shader compiler process
