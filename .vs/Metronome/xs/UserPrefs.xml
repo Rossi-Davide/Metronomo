@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{DA99C179-1EFD-6579-345B-4B94CB9A507E}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/GameManager.cs" Line="70" Column="71" />
+      <File FileName="Assets/Scripts/PlaySoundsOnBeat.cs" Line="61" Column="16" />
+      <File FileName="Assets/Scripts/Sound.cs" />
+      <File FileName="Assets/Scripts/BPM.cs" />
+      <File FileName="Assets/Scripts/Volume.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Metronome" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="GameManager.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="2a30f62f-0d8c-4e7a-b790-875b6c305272" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
