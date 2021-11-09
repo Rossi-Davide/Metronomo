@@ -108,3 +108,53 @@ C# parse time         : 559ms
 candidates check time : 135ms
 console write time    : 1ms
 
+[api-updater (non-obsolete-error-filter)] 11/9/2021 7:20:58 PM : Starting /Volumes/Crucial X6/Applications/2020.3.19f1/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 287.068ms
+moved types parse time: 144ms
+candidates parse time : 6ms
+C# parse time         : 522ms
+candidates check time : 308ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 11/9/2021 7:21:06 PM : Starting /Volumes/Crucial X6/Applications/2020.3.19f1/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 156.936ms
+moved types parse time: 154ms
+candidates parse time : 6ms
+C# parse time         : 464ms
+candidates check time : 301ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 11/9/2021 7:21:09 PM : Starting /Volumes/Crucial X6/Applications/2020.3.19f1/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 114.465ms
+moved types parse time: 168ms
+candidates parse time : 6ms
+C# parse time         : 443ms
+candidates check time : 268ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 11/9/2021 8:45:11 PM : Starting /Volumes/Crucial X6/Applications/2020.3.19f1/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 268.929ms
+moved types parse time: 145ms
+candidates parse time : 7ms
+C# parse time         : 503ms
+candidates check time : 227ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 11/9/2021 8:46:42 PM : Starting /Volumes/Crucial X6/Applications/2020.3.19f1/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 254.419ms
+moved types parse time: 189ms
+candidates parse time : 6ms
+C# parse time         : 533ms
+candidates check time : 169ms
+console write time    : 1ms
+

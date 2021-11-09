@@ -1,38 +1,80 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BPM : MonoBehaviour
 {
     private static BPM bpmInstance;
 
+    //current bpm used by the program
     private float _bpmSystem;
+
+    private const int secondsInAMinute = 60;
     
     public float Bpm{
 
         set
-        { 
-            _beatInterval = 60 / value;
-        _beatIntervalD8 = _beatInterval / 2;
-        _beatIntervalD16 = _beatInterval / 4;
+        {
+            if (value < 0)
+            {
+                throw new Exception("Bpm can't be less than 0");
+            }
 
-        _bpmSystem = value;
+            if (value > 200)
+            {
+                throw new Exception("Bpm can't be greater than 200");
+            }
+
+            _beatInterval = secondsInAMinute / value;
+
+            
+
+            _bpmSystem = value;
         }
 
         get{ return _bpmSystem; }
     }
 
     //the duration of a tick in seconds
-    private float _beatInterval;
+    private static float _beatInterval;
 
-    //timers and submultiples
-    private float _beatTimer, _beatIntervalD8, _beatTimerD8, _beatIntervalD16,_beatTimerD16;
+    //timer
+    //updated as the time goes on
+    private float _beatTimer;
 
+    //submultiples
+    private float _beatSubTimer;
+
+    private static float _beatSubInterval;
+
+    //boolean that triggers the sound to play
     public static bool BeatFull{set; get;}
-    public static bool BeatD8{set; get;} 
-    public static bool BeatD16{set; get;}
+    public static bool BeatSubMultiple { set; get; }
 
-    public static int beatCountFull, beatCountD8,beatCountD16;
+    //divisor
+    //The divisor defines the beat subdivision
+    private static int _divisor= -1;
+    public static int Divisor
+    {
+        set
+        {
+            if (value < 0)
+            {
+                throw new Exception("Can't divide by 0");
+            }
+            _divisor = value;
+
+            _beatSubInterval = _beatInterval / Divisor;
+        }
+
+        get
+        {
+            return _divisor;
+        }
+    }
+
+    public static int beatCountFull, beatCountSub;
 
     
     //singleton
@@ -86,36 +128,21 @@ public class BPM : MonoBehaviour
             }
         }
 
-        BeatD8 = false;
+
+
+        BeatSubMultiple = false;
         
-        _beatTimerD8 += Time.deltaTime;
+        _beatSubTimer += Time.deltaTime;
 
-        if(_beatTimerD8>= _beatIntervalD8)
+        if(_beatSubTimer>= _beatSubInterval)
         {
-            _beatTimerD8 -= _beatIntervalD8;
-            BeatD8 = true;
-            beatCountD8++;
+            _beatSubTimer -= _beatSubInterval;
+            BeatSubMultiple = true;
+            beatCountSub++;
 
-            if (beatCountD8 > 8)
+            if (beatCountSub > Divisor)
             {
-                beatCountD8 = 1;
-            }
-
-        }
-
-        BeatD16 = false;
-        
-        _beatTimerD16 += Time.deltaTime;
-
-        if (_beatTimerD16 >= _beatIntervalD16)
-        {
-            _beatTimerD16 -= _beatIntervalD16;
-            BeatD16 = true;
-            beatCountD16++;
-
-            if (beatCountD16 > 16)
-            {
-                beatCountD16 = 1;
+                beatCountSub = 1;
             }
 
         }

@@ -311,6 +311,13 @@ public class GameManager : MonoBehaviour
         BPM.beatCountD16 = 1;
     }
 
+    public void NoteDuration(int division)
+    {
+        BPM.Divisor = division;
+        BPM.beatCountFull = 1;
+        BPM.beatCountSub = 1;
+    }
+
 
     //resets counters of all the blocks in the scene
     private void ResetCountersLights()

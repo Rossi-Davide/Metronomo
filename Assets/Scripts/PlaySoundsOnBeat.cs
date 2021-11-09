@@ -14,6 +14,9 @@ public class PlaySoundsOnBeat : MonoBehaviour
     public bool Quarter{set; get;}
     public bool  Eigth{set; get;}
     public bool Sixteenth{ set; get;}
+
+    //specifies whether we are using the standard subdivision (1/4) or not
+    public bool Standard { set; get; }
      
     // Start is called before the first frame update
     void Start()
@@ -21,8 +24,7 @@ public class PlaySoundsOnBeat : MonoBehaviour
         Power = false;
         Quarter = true;
         BPM.beatCountFull = 1;
-        BPM.beatCountD8 = 1;
-        BPM.beatCountD16 = 1;
+        BPM.beatCountSub = 1;
     }
 
     // Update is called once per frame
@@ -30,7 +32,29 @@ public class PlaySoundsOnBeat : MonoBehaviour
     {
         if (Power)
         {
-            if (Quarter)
+            if (Standard)
+            {
+                if (BPM.BeatFull && BPM.beatCountFull == 2)
+                {
+
+
+                    tap.Play();
+                }
+                else if (BPM.BeatFull)
+                {
+
+
+                    tick.Play();
+                }
+            }
+            else
+            {
+                if (BPM.BeatSubMultiple)
+                {
+                    tap.Play();
+                }
+            }
+            /*if (Quarter)
             {
                 
                 
@@ -67,7 +91,7 @@ public class PlaySoundsOnBeat : MonoBehaviour
                     tap.Play();
                 }
                
-            }
+            }*/
 
 
 
@@ -76,10 +100,11 @@ public class PlaySoundsOnBeat : MonoBehaviour
         else
         {
             BPM.beatCountFull = 1;
-            BPM.beatCountD8 = 1;
-            BPM.beatCountD16 = 1;
+            BPM.beatCountSub = 1;
         }
         
         
     }
+
+   
 }
