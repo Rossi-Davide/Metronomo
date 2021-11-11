@@ -44,9 +44,12 @@ public class GameManager : MonoBehaviour
     }
 
 
+    
+
+
     private void Update()
     {
-        if (soundPlayer.Power)
+        /*if (soundPlayer.Power)
         {
             if (soundPlayer.Quarter)
             {
@@ -117,7 +120,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-        }    
+        }  */  
     }
 
 
@@ -133,6 +136,7 @@ public class GameManager : MonoBehaviour
     //method called by the bpms input text field
     public void InputTextFieldSetBPM(string bpm)
     {
+        Debug.Log("Entered");
         try{
 
             if(string.IsNullOrEmpty(bpm)){
@@ -249,9 +253,8 @@ public class GameManager : MonoBehaviour
     {
         lightSwitches.position = positions[0].position;
 
-        soundPlayer.Quarter = true;
-        soundPlayer.Eigth = false;
-        soundPlayer.Sixteenth = false;
+        soundPlayer.Standard = true;
+
 
 
         quarter.SetActive(true);
@@ -263,17 +266,15 @@ public class GameManager : MonoBehaviour
         ResetCountersLights();
 
         BPM.beatCountFull = 1;
-        BPM.beatCountD8 = 1;
-        BPM.beatCountD16 = 1;
+        BPM.beatCountSub = 1;
+        BPM.Divisor = 1;
     }
 
     public void OneToEight()
     {
         lightSwitches.position = positions[1].position;
 
-        soundPlayer.Quarter = false;
-        soundPlayer.Eigth = true;
-        soundPlayer.Sixteenth = false;
+        soundPlayer.Standard = false;
 
 
         quarter.SetActive(false);
@@ -285,17 +286,15 @@ public class GameManager : MonoBehaviour
         ResetCountersLights();
 
         BPM.beatCountFull = 1;
-        BPM.beatCountD8 = 1;
-        BPM.beatCountD16 = 1;
+        BPM.beatCountSub = 1;
+        BPM.Divisor = 2;
     }
 
     public void OneToSixteen()
     {
         lightSwitches.position = positions[2].position;
 
-        soundPlayer.Quarter = false;
-        soundPlayer.Eigth = false;
-        soundPlayer.Sixteenth = true;
+        soundPlayer.Standard = false;
 
 
         quarter.SetActive(false);
@@ -307,8 +306,8 @@ public class GameManager : MonoBehaviour
         ResetCountersLights();
 
         BPM.beatCountFull = 1;
-        BPM.beatCountD8 = 1;
-        BPM.beatCountD16 = 1;
+        BPM.beatCountSub = 1;
+        BPM.Divisor = 4;
     }
 
     public void NoteDuration(int division)

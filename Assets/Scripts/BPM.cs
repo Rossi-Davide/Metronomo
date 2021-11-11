@@ -54,14 +54,14 @@ public class BPM : MonoBehaviour
 
     //divisor
     //The divisor defines the beat subdivision
-    private static int _divisor= -1;
+    private static int _divisor= 1;
     public static int Divisor
     {
         set
         {
-            if (value < 0)
+            if (value < 1)
             {
-                throw new Exception("Can't divide by 0");
+                throw new Exception("Can't divide by numbers lower than 1");
             }
             _divisor = value;
 
