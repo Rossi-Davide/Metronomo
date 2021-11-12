@@ -5867,12 +5867,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2124164230}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OneToSixteen
-        m_Mode: 1
+        m_MethodName: NoteDuration
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8551,12 +8551,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2124164230}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OneToFour
-        m_Mode: 1
+        m_MethodName: NoteDuration
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9019,12 +9019,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2124164230}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OneToEight
-        m_Mode: 1
+        m_MethodName: NoteDuration
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

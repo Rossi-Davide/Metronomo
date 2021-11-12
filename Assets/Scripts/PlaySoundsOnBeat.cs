@@ -17,6 +17,9 @@ public class PlaySoundsOnBeat : MonoBehaviour
 
     //specifies whether we are using the standard subdivision (1/4) or not
     public bool Standard { set; get; }
+
+    //counting the beat subdivisions, used to determine when to play sounds
+    private int counterTickSub;
      
     // Start is called before the first frame update
     void Start()
@@ -25,6 +28,7 @@ public class PlaySoundsOnBeat : MonoBehaviour
         Standard = true;
         BPM.beatCountFull = 1;
         BPM.beatCountSub = 1;
+        counterTickSub = 0;
     }
 
     // Update is called once per frame
@@ -49,49 +53,31 @@ public class PlaySoundsOnBeat : MonoBehaviour
             }
             else
             {
-                if (BPM.BeatSubMultiple)
-                {
-                    tap.Play();
-                }
-            }
-            /*if (Quarter)
-            {
                 
-                
-                if (BPM.BeatFull && BPM.beatCountFull == 2)
-                {
 
-                   
-                    tap.Play();
-                }
-                else if (BPM.BeatFull)
+                if (BPM.BeatSubMultiple && BPM.beatCountSub == 2)
                 {
+                    tap.Play();
                     
-                   
+                }
+                else if(BPM.BeatSubMultiple && (counterTickSub-2)%BPM.Divisor == 0)
+                {
                     tick.Play();
                 }
 
-                
-            }
-            else if (Eigth)
-            {
-                
-                if (BPM.BeatD8 && (BPM.beatCountD8 == 2 || BPM.beatCountD8 == 4|| BPM.beatCountD8 == 6|| BPM.beatCountD8 == 8))
+                if (BPM.BeatSubMultiple)
                 {
-                    tap.Play();
-                }
-               
-            }
-            else if (Sixteenth)
-            {
-                
-                if (BPM.BeatD16 && (BPM.beatCountD16 == 2 || BPM.beatCountD16 == 6 || BPM.beatCountD16 == 10 || BPM.beatCountD16 == 14))
-                {
+                    counterTickSub++;
 
-                    tap.Play();
+                    if (counterTickSub > 17)
+                    {
+                        counterTickSub = 0;
+                    }
                 }
-               
-            }*/
+
+
+            }
+            
 
 
 

@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
     //method called by the bpms input text field
     public void InputTextFieldSetBPM(string bpm)
     {
-        Debug.Log("Entered");
+       
         try{
 
             if(string.IsNullOrEmpty(bpm)){
@@ -312,7 +312,17 @@ public class GameManager : MonoBehaviour
 
     public void NoteDuration(int division)
     {
+
         BPM.Divisor = division;
+        if(division == 1)
+        {
+            soundPlayer.Standard = true;
+        }
+        else
+        {
+            soundPlayer.Standard = false;
+        }
+       
         BPM.beatCountFull = 1;
         BPM.beatCountSub = 1;
     }
