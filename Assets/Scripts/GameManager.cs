@@ -325,6 +325,7 @@ public class GameManager : MonoBehaviour
        
         BPM.beatCountFull = 1;
         BPM.beatCountSub = 1;
+        soundPlayer.counterTickSub = 0;
     }
 
 

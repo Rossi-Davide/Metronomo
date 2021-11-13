@@ -19,7 +19,7 @@ public class PlaySoundsOnBeat : MonoBehaviour
     public bool Standard { set; get; }
 
     //counting the beat subdivisions, used to determine when to play sounds
-    private int counterTickSub;
+    public int counterTickSub;
      
     // Start is called before the first frame update
     void Start()
@@ -60,16 +60,18 @@ public class PlaySoundsOnBeat : MonoBehaviour
                     tap.Play();
                     
                 }
-                else if(BPM.BeatSubMultiple && (counterTickSub-2)%BPM.Divisor == 0)
+                else if(BPM.BeatSubMultiple && counterTickSub%BPM.Divisor == 0)
                 {
+                    
                     tick.Play();
                 }
 
                 if (BPM.BeatSubMultiple)
                 {
+                    
                     counterTickSub++;
 
-                    if (counterTickSub > 17)
+                    if (counterTickSub >= (BPM.Divisor*4))
                     {
                         counterTickSub = 0;
                     }

@@ -66,6 +66,8 @@ public class BPM : MonoBehaviour
             _divisor = value;
 
             _beatSubInterval = _beatInterval / Divisor;
+            beatCountFull = 0;
+            beatCountSub = 0;
         }
 
         get
@@ -140,7 +142,7 @@ public class BPM : MonoBehaviour
             BeatSubMultiple = true;
             beatCountSub++;
 
-            if (beatCountSub > Divisor)
+            if (beatCountSub > Divisor*4)
             {
                 beatCountSub = 1;
             }
