@@ -265,8 +265,7 @@ public class GameManager : MonoBehaviour
 
         ResetCountersLights();
 
-        BPM.beatCountFull = 1;
-        BPM.beatCountSub = 1;
+        BPM.ResetCounters();
         BPM.Divisor = 1;
     }
 
@@ -285,8 +284,7 @@ public class GameManager : MonoBehaviour
 
         ResetCountersLights();
 
-        BPM.beatCountFull = 1;
-        BPM.beatCountSub = 1;
+        BPM.ResetCounters();
         BPM.Divisor = 2;
     }
 
@@ -305,8 +303,7 @@ public class GameManager : MonoBehaviour
 
         ResetCountersLights();
 
-        BPM.beatCountFull = 1;
-        BPM.beatCountSub = 1;
+        BPM.ResetCounters();
         BPM.Divisor = 4;
     }
 
@@ -322,9 +319,8 @@ public class GameManager : MonoBehaviour
         {
             soundPlayer.Standard = false;
         }
-       
-        BPM.beatCountFull = 1;
-        BPM.beatCountSub = 1;
+
+        BPM.ResetCounters();
         soundPlayer.counterTickSub = 0;
     }
 

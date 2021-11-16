@@ -66,8 +66,8 @@ public class BPM : MonoBehaviour
             _divisor = value;
 
             _beatSubInterval = _beatInterval / Divisor;
-            beatCountFull = 0;
-            beatCountSub = 0;
+            _beatLengthCount = 1;
+            _beatSubLengthCount = 1;
         }
 
         get
@@ -76,13 +76,60 @@ public class BPM : MonoBehaviour
         }
     }
 
-    public static int beatCountFull, beatCountSub;
 
-    
+
+
+    //counts the quarters of a beat and its submultiples
+    private static int _beatLengthCount, _beatSubLengthCount;
+
+    public static int BeatLengthCount
+    {
+        get
+        {
+            return _beatLengthCount;
+        }
+    }
+
+    public static int BeatSubLengthCount
+    {
+        get
+        {
+            return _beatSubLengthCount;
+        }
+    }
+
+   
+
+
+
+    private int _beatLength = 4;
+
+
+    public int BeatLength
+    {
+        set
+        {
+            if(value <= 0)
+            {
+                throw new Exception("The number of notes in a beat must be 1 or greater");
+            }
+
+            _beatLength = value;
+        }
+
+        get
+        {
+            return _beatLength;
+        }
+
+    }
+
+
+
     //singleton
     private void Awake()
     {
-        if(bpmInstance != null && bpmInstance != this)
+        if (bpmInstance != null && bpmInstance != this)
         {
             Destroy(this.gameObject);
         }
@@ -94,7 +141,7 @@ public class BPM : MonoBehaviour
     }
 
 
-    
+
 
     // Update is called once per frame
     void Update()
@@ -103,6 +150,12 @@ public class BPM : MonoBehaviour
             BeatDetection();
         
        
+    }
+
+    public static void ResetCounters()
+    {
+        _beatLengthCount = 1;
+        _beatSubLengthCount = 1;
     }
 
     void BeatDetection()
@@ -121,12 +174,12 @@ public class BPM : MonoBehaviour
 
             
 
-            beatCountFull++;
+            _beatLengthCount++;
            
           
-            if (beatCountFull > 4)
+            if (_beatLengthCount > BeatLength)
             {
-                beatCountFull = 1;
+                _beatLengthCount = 1;
             }
         }
 
@@ -140,11 +193,11 @@ public class BPM : MonoBehaviour
         {
             _beatSubTimer -= _beatSubInterval;
             BeatSubMultiple = true;
-            beatCountSub++;
+            _beatSubLengthCount++;
 
-            if (beatCountSub > Divisor*4)
+            if (_beatSubLengthCount > Divisor*BeatLength)
             {
-                beatCountSub = 1;
+                _beatSubLengthCount = 1;
             }
 
         }

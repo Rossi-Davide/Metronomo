@@ -26,8 +26,7 @@ public class PlaySoundsOnBeat : MonoBehaviour
     {
         Power = false;
         Standard = true;
-        BPM.beatCountFull = 1;
-        BPM.beatCountSub = 1;
+        
         counterTickSub = 0;
     }
 
@@ -38,7 +37,7 @@ public class PlaySoundsOnBeat : MonoBehaviour
         {
             if (Standard)
             {
-                if (BPM.BeatFull && BPM.beatCountFull == 2)
+                if (BPM.BeatFull && BPM.BeatLengthCount == 2)
                 {
 
 
@@ -55,7 +54,7 @@ public class PlaySoundsOnBeat : MonoBehaviour
             {
                 
 
-                if (BPM.BeatSubMultiple && BPM.beatCountSub == 2)
+                if (BPM.BeatSubMultiple && BPM.BeatSubLengthCount == 2)
                 {
                     tap.Play();
                     
@@ -87,8 +86,7 @@ public class PlaySoundsOnBeat : MonoBehaviour
         }
         else
         {
-            BPM.beatCountFull = 1;
-            BPM.beatCountSub = 1;
+            BPM.ResetCounters();
         }
         
         
