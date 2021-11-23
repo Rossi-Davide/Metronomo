@@ -249,7 +249,7 @@ public class GameManager : MonoBehaviour
 
 
     #region NoteTransition switching methods
-    public void OneToFour()
+   /* public void OneToFour()
     {
         lightSwitches.position = positions[0].position;
 
@@ -305,23 +305,30 @@ public class GameManager : MonoBehaviour
 
         BPM.ResetCounters();
         BPM.Divisor = 4;
-    }
+    }*/
 
-    public void NoteDuration(int division)
+    public void NoteDuration(float division)
     {
-
-        BPM.Divisor = division;
-        if(division == 1)
+        try
         {
-            soundPlayer.Standard = true;
-        }
-        else
-        {
-            soundPlayer.Standard = false;
-        }
+            BPM.Divisor = division;
+            if (division == 1)
+            {
+                soundPlayer.Standard = true;
+            }
+            else
+            {
+                soundPlayer.Standard = false;
+            }
 
-        BPM.ResetCounters();
-        soundPlayer.counterTickSub = 0;
+            BPM.ResetCounters();
+            soundPlayer.counterTickSub = 0;
+        }
+        catch(Exception ex)
+        {
+            ThrowError(ex);
+        }
+        
     }
 
 
