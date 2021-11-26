@@ -33,7 +33,11 @@ public class GameManager : MonoBehaviour
 
     public Animator errorTextAnim;
 
+    public GameObjectSpawner spawner;
+
     private int light4Counter, light8Counter, light16Counter;
+
+   
 
 
     private void Start()
@@ -322,6 +326,7 @@ public class GameManager : MonoBehaviour
             }
 
             BPM.ResetCounters();
+            RebuildBlockMap();
             soundPlayer.counterTickSub = 0;
         }
         catch(Exception ex)
@@ -330,6 +335,18 @@ public class GameManager : MonoBehaviour
         }
         
     }
+
+
+    public void TimeDivision(int beatLength)
+    {
+
+
+
+        BPM.BeatLength = beatLength;
+
+        RebuildBlockMap();
+    }
+
 
 
     //resets counters of all the blocks in the scene
@@ -363,5 +380,12 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+
+
+    private void RebuildBlockMap()
+    {
+        spawner.BuildMap();
+    }
 }
 

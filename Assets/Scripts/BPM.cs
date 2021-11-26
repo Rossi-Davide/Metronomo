@@ -101,11 +101,11 @@ public class BPM : MonoBehaviour
    
 
 
+    //number of ticks in a beat
+    private static int _beatLength = 4;
 
-    private int _beatLength = 4;
 
-
-    public int BeatLength
+    public static int BeatLength
     {
         set
         {
