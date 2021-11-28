@@ -1081,8 +1081,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   low: {fileID: 790791646}
   high: {fileID: 1200349846}
+  canvasParent: {fileID: 2124164229}
   spawner: {fileID: 1795412729}
-  prefab: {fileID: 0}
+  prefab: {fileID: 2410466676235636009, guid: eb1a8719814224f7b88d2fd37f12d202, type: 3}
 --- !u!4 &159878027
 Transform:
   m_ObjectHideFlags: 0

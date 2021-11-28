@@ -385,6 +385,7 @@ public class GameManager : MonoBehaviour
 
     private void RebuildBlockMap()
     {
+        spawner.DestroyMap();
         spawner.BuildMap();
     }
 }
