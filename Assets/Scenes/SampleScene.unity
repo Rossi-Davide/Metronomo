@@ -1134,7 +1134,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 478.99994, y: 6}
+  m_AnchoredPosition: {x: 478.99994, y: 439}
   m_SizeDelta: {x: 99.53998, y: 98.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &161280463
@@ -5845,7 +5845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -523, y: -178.4}
+  m_AnchoredPosition: {x: -526.4, y: -157.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &802402958
@@ -8227,7 +8227,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 462, y: 257.1}
+  m_AnchoredPosition: {x: 469.7, y: 216.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1215816676
@@ -15181,6 +15181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: glowing block (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2410466676235636009, guid: eb1a8719814224f7b88d2fd37f12d202, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2410466676235636010, guid: eb1a8719814224f7b88d2fd37f12d202, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -15224,6 +15228,10 @@ PrefabInstance:
     - target: {fileID: 2410466676235636010, guid: eb1a8719814224f7b88d2fd37f12d202, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410466677287375388, guid: eb1a8719814224f7b88d2fd37f12d202, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb1a8719814224f7b88d2fd37f12d202, type: 3}
