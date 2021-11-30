@@ -311,6 +311,22 @@ public class GameManager : MonoBehaviour
         BPM.Divisor = 4;
     }*/
 
+
+    public void InputTimeField(string time)
+    {
+        try
+        {
+            int timeInt = int.Parse(time);
+
+            BPM.BeatLength = timeInt;
+
+            RebuildBlockMap();
+        }catch(Exception ex)
+        {
+            ThrowError(ex);
+        }
+    }
+
     public void NoteDuration(float division)
     {
         try
