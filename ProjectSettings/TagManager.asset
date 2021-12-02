@@ -12,9 +12,9 @@ TagManager:
   - Water
   - UI
   - time signatures
-  - 
-  - 
-  - 
+  - control pael
+  - 'ntoe panel '
+  - time signatures panel
   - 
   - 
   - 
@@ -94,4 +94,10 @@ TagManager:
     locked: 0
   - name: block16
     uniqueID: 2246247307
+    locked: 0
+  - name: control panel
+    uniqueID: 3230040381
+    locked: 0
+  - name: time panel
+    uniqueID: 3326931265
     locked: 0
