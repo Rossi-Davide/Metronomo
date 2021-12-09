@@ -1206,7 +1206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 415, y: 526}
+  m_AnchoredPosition: {x: 415, y: 498}
   m_SizeDelta: {x: 99.53998, y: 98.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &161280463
@@ -3119,7 +3119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 738, y: 526}
+  m_AnchoredPosition: {x: 738, y: 498}
   m_SizeDelta: {x: 99.53998, y: 98.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &361986855
@@ -3290,7 +3290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: df0ebaab2b3154f8bb5b8da655364c1c, type: 2}
+  m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -3847,7 +3847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50.3}
+  m_AnchoredPosition: {x: 0, y: -50.30005}
   m_SizeDelta: {x: 443.07, y: 117.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444760884
@@ -4180,7 +4180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &463627677
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6102,7 +6102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 927, y: 510}
+  m_AnchoredPosition: {x: 927, y: 529}
   m_SizeDelta: {x: 99.53998, y: 98.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &767514461
@@ -6172,7 +6172,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 26
+          m_IntArgument: -1
           m_FloatArgument: 0.25
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9310,7 +9310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: df0ebaab2b3154f8bb5b8da655364c1c, type: 2}
+  m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -9759,7 +9759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: df0ebaab2b3154f8bb5b8da655364c1c, type: 2}
+  m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -13889,7 +13889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 573, y: 526}
+  m_AnchoredPosition: {x: 573, y: 498}
   m_SizeDelta: {x: 99.53998, y: 98.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1758715584
@@ -14543,7 +14543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 255, y: 526}
+  m_AnchoredPosition: {x: 255, y: 498}
   m_SizeDelta: {x: 99.53998, y: 98.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1878550337
@@ -15634,7 +15634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 600.99994, y: 295}
+  m_AnchoredPosition: {x: 600.99994, y: 644}
   m_SizeDelta: {x: 356.28003, y: 68.09}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2032943920
@@ -16463,6 +16463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bpmLabel: {fileID: 2146737807}
+  timeLabel: {fileID: 287101295}
   _bpm: {fileID: 1403722546}
   soundPlayer: {fileID: 1445856982}
   lightSwitches: {fileID: 1496769443}

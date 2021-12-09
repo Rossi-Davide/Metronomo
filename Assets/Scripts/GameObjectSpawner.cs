@@ -13,7 +13,7 @@ public class GameObjectSpawner : MonoBehaviour
     public GameObject spawner;
     public GameObject prefab;
 
-    private List<GameObject> instantiatedObjects;
+    public static List<GameObject> instantiatedObjects;
 
 
     private void Start()

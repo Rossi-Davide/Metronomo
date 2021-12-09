@@ -11,9 +11,7 @@ public class PlaySoundsOnBeat : MonoBehaviour
 
     public bool Power{set; get;}
 
-    /*public bool Quarter{set; get;}
-    public bool  Eigth{set; get;}
-    public bool Sixteenth{ set; get;}*/
+   
 
     //specifies whether we are using the standard subdivision (1/4) or not
     public bool Standard { set; get; }

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     float bpmMetronome= -1;
 
     //text input field for bpm
-    public GameObject bpmLabel;
+    public GameObject bpmLabel,timeLabel;
 
     public BPM _bpm;
 
@@ -23,11 +23,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject quarter, eigth, sixteeth;
 
-    public GameObject[] quarterLights;
-
-    public GameObject[] eightLights;
-
-    public GameObject[] sixteenLights;
+   
 
     public  TextMeshProUGUI errorText;
 
@@ -45,6 +41,10 @@ public class GameManager : MonoBehaviour
         quarter.SetActive(true);
         eigth.SetActive(false);
         sixteeth.SetActive(false);
+        BPM.BeatLength = 4;
+        BPM.Divisor = 1;
+        BPM.ResetCounters();
+        RebuildBlockMap();
     }
 
 
@@ -53,78 +53,24 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        /*if (soundPlayer.Power)
+        if (soundPlayer.Power)
         {
-            if (soundPlayer.Quarter)
+            if (soundPlayer.Standard)
             {
                 if (BPM.BeatFull)
                 {
-                    quarterLights[light4Counter].SetActive(true);
+                   
 
-                    if(light4Counter == 0)
-                    {
-                        quarterLights[quarterLights.Length - 1].SetActive(false);
-                    }
-                    else
-                    {
-                        quarterLights[light4Counter - 1].SetActive(false);
-                    }
-
-                    light4Counter++;
-
-                    if (light4Counter >= quarterLights.Length)
-                    {
-                        light4Counter = 0;
-                    }
-
-                }
-            }else if (soundPlayer.Eigth)
-            {
-                if (BPM.BeatD8)
-                {
-                    eightLights[light8Counter].SetActive(true);
-
-                    if (light8Counter == 0)
-                    {
-                        eightLights[eightLights.Length - 1].SetActive(false);
-                    }
-                    else
-                    {
-                        eightLights[light8Counter - 1].SetActive(false);
-                    }
-
-                    light8Counter++;
-
-                    if (light8Counter >= eightLights.Length)
-                    {
-                        light8Counter = 0;
-                    }
                 }
             }
             else
             {
-                if (BPM.BeatD16)
+                if (BPM.BeatSubMultiple)
                 {
-                    sixteenLights[light16Counter].SetActive(true);
-
-                    if (light16Counter == 0)
-                    {
-                        sixteenLights[sixteenLights.Length - 1].SetActive(false);
-                    }
-                    else
-                    {
-                        sixteenLights[light16Counter - 1].SetActive(false);
-                    }
-
-                    light16Counter++;
-
-                    if (light16Counter >= sixteenLights.Length)
-                    {
-                        light16Counter = 0;
-                    }
+                    
                 }
             }
-        }  */  
+        }  
     }
 
 
@@ -253,63 +199,7 @@ public class GameManager : MonoBehaviour
 
 
     #region NoteTransition switching methods
-   /* public void OneToFour()
-    {
-        lightSwitches.position = positions[0].position;
-
-        soundPlayer.Standard = true;
-
-
-
-        quarter.SetActive(true);
-        eigth.SetActive(false);
-        sixteeth.SetActive(false);
-
-        PerformShutdown();
-
-        ResetCountersLights();
-
-        BPM.ResetCounters();
-        BPM.Divisor = 1;
-    }
-
-    public void OneToEight()
-    {
-        lightSwitches.position = positions[1].position;
-
-        soundPlayer.Standard = false;
-
-
-        quarter.SetActive(false);
-        eigth.SetActive(true);
-        sixteeth.SetActive(false);
-
-        PerformShutdown();
-
-        ResetCountersLights();
-
-        BPM.ResetCounters();
-        BPM.Divisor = 2;
-    }
-
-    public void OneToSixteen()
-    {
-        lightSwitches.position = positions[2].position;
-
-        soundPlayer.Standard = false;
-
-
-        quarter.SetActive(false);
-        eigth.SetActive(false);
-        sixteeth.SetActive(true);
-
-        PerformShutdown();
-
-        ResetCountersLights();
-
-        BPM.ResetCounters();
-        BPM.Divisor = 4;
-    }*/
+  
 
 
     public void InputTimeField(string time)
@@ -355,12 +245,26 @@ public class GameManager : MonoBehaviour
 
     public void TimeDivision(int beatLength)
     {
+        try
+        {
+            //call from custom time
+            if (beatLength == -1)
+            {
+
+                beatLength = int.Parse(timeLabel.GetComponent<TMP_InputField>().text);
 
 
+            }
 
-        BPM.BeatLength = beatLength;
+            BPM.BeatLength = beatLength;
 
-        RebuildBlockMap();
+            RebuildBlockMap();
+        }
+        catch(Exception ex)
+        {
+            ThrowError(ex);
+        }
+        
     }
 
 
