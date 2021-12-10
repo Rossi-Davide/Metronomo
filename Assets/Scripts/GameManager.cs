@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviour
 
     public Transform[] positions;
 
-    public GameObject quarter, eigth, sixteeth;
-
    
 
     public  TextMeshProUGUI errorText;
@@ -31,16 +29,14 @@ public class GameManager : MonoBehaviour
 
     public GameObjectSpawner spawner;
 
-    private int light4Counter, light8Counter, light16Counter;
 
+    public GameObject[] luciBlocchi;
    
 
 
     private void Start()
     {
-        quarter.SetActive(true);
-        eigth.SetActive(false);
-        sixteeth.SetActive(false);
+      
         BPM.BeatLength = 4;
         BPM.Divisor = 1;
         BPM.ResetCounters();
@@ -272,9 +268,7 @@ public class GameManager : MonoBehaviour
     //resets counters of all the blocks in the scene
     private void ResetCountersLights()
     {
-        light4Counter = 0;
-        light8Counter = 0;
-        light16Counter = 0;
+        
     }
 
     
@@ -283,20 +277,7 @@ public class GameManager : MonoBehaviour
     //shuts down every light in the scene
     private void PerformShutdown()
     {
-        foreach(GameObject g in quarterLights)
-        {
-            g.SetActive(false);
-        }
-
-        foreach(GameObject g in eightLights)
-        {
-            g.SetActive(false);
-        }
-
-        foreach(GameObject g in sixteenLights)
-        {
-            g.SetActive(false);
-        }
+        
     }
 
     #endregion
@@ -307,6 +288,12 @@ public class GameManager : MonoBehaviour
     {
         spawner.DestroyMap();
         spawner.BuildMap();
+        luciBlocchi = new GameObject[GameObjectSpawner.instantiatedObjects.Count];
+
+        for (int i = 0; i< luciBlocchi.Length;i++)
+        {
+            luciBlocchi[i] = GameObjectSpawner.instantiatedObjects[i].gameObj
+        }
     }
 }
 
