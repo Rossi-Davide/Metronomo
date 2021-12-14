@@ -31,16 +31,18 @@ public class GameManager : MonoBehaviour
 
 
     public GameObject[] luciBlocchi;
-   
 
+    private int lightCounter;
 
     private void Start()
     {
       
         BPM.BeatLength = 4;
         BPM.Divisor = 1;
+        lightCounter = 0;
         BPM.ResetCounters();
         RebuildBlockMap();
+
     }
 
 
@@ -55,15 +57,46 @@ public class GameManager : MonoBehaviour
             {
                 if (BPM.BeatFull)
                 {
-                   
+                    luciBlocchi[lightCounter].SetActive(true);
 
+                    if (lightCounter == 0)
+                    {
+                        luciBlocchi[luciBlocchi.Length - 1].SetActive(false);
+                    }
+                    else
+                    {
+                        luciBlocchi[lightCounter - 1].SetActive(false);
+                    }
+
+                    lightCounter++;
+
+                    if (lightCounter == luciBlocchi.Length)
+                    {
+                        lightCounter = 0;
+                    }
                 }
             }
             else
             {
                 if (BPM.BeatSubMultiple)
                 {
-                    
+                    luciBlocchi[lightCounter].SetActive(true);
+
+                    if (lightCounter == 0)
+                    {
+                        luciBlocchi[luciBlocchi.Length - 1].SetActive(false);
+                    }
+                    else
+                    {
+                        luciBlocchi[lightCounter - 1].SetActive(false);
+                    }
+
+                    lightCounter++;
+
+                    if (lightCounter == luciBlocchi.Length)
+                    {
+                        lightCounter = 0;
+                    }
                 }
             }
         }  
@@ -156,6 +189,8 @@ public class GameManager : MonoBehaviour
                 throw new Exception("You haven't set a parameter in the bpm field");
             }
 
+            lightCounter = 0;
+
             _bpm.Bpm = bpmMetronome;
 
             soundPlayer.Power = true;
@@ -173,6 +208,7 @@ public class GameManager : MonoBehaviour
         try
         {
             soundPlayer.Power = false;
+            lightCounter = 0;
 
             PerformShutdown();
 
@@ -241,8 +277,8 @@ public class GameManager : MonoBehaviour
 
     public void TimeDivision(int beatLength)
     {
-        try
-        {
+        /*try
+        {*/
             //call from custom time
             if (beatLength == -1)
             {
@@ -255,11 +291,11 @@ public class GameManager : MonoBehaviour
             BPM.BeatLength = beatLength;
 
             RebuildBlockMap();
-        }
+        /*}
         catch(Exception ex)
         {
             ThrowError(ex);
-        }
+        }*/
         
     }
 
@@ -292,8 +328,10 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i< luciBlocchi.Length;i++)
         {
-            luciBlocchi[i] = GameObjectSpawner.instantiatedObjects[i].gameObj
+            luciBlocchi[i] = GameObjectSpawner.instantiatedObjects[i].transform.Find("blockLight").gameObject;
+            luciBlocchi[i].SetActive(false);
         }
+        lightCounter = 0;
     }
 }
 
