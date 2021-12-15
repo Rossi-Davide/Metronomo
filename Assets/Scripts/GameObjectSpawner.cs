@@ -12,7 +12,7 @@ public class GameObjectSpawner : MonoBehaviour
     public Transform canvasParent;
 
     public GameObject spawner;
-    public GameObject prefab;
+    public GameObject[] prefabs;
 
     public static List<GameObject> instantiatedObjects;
 
@@ -20,6 +20,7 @@ public class GameObjectSpawner : MonoBehaviour
     private void Start()
     {
         instantiatedObjects = new List<GameObject>();
+        
     }
 
     public void BuildMap()
@@ -70,25 +71,38 @@ public class GameObjectSpawner : MonoBehaviour
         Vector2 height = new Vector2(0,totalY/divisionsPerCube);
 
         //resetting block scale
-        Transform prefabTransform = prefab.GetComponent<Transform>();
 
-        Transform blockChild = prefabTransform.Find("block");
+        for(int i=0; i<prefabs.Length;i++)
+        {
+            Transform prefabTransform = prefabs[i].GetComponent<Transform>();
 
-        Vector3 blockChildNewScale = new Vector3(1/divisionsPerCube, blockChild.localScale.y, blockChild.localScale.z);
+            Transform blockChild = prefabTransform.Find("block");
 
-        blockChild.localScale = blockChildNewScale;
+            Vector3 blockChildNewScale = new Vector3(1 / divisionsPerCube, blockChild.localScale.y, blockChild.localScale.z);
 
+            blockChild.localScale = blockChildNewScale;
+        }
+
+
+        System.Random random = new System.Random();
 
         //spawning cycle
-        for(int i= 0; i<nCubes; i++)
+        for (int i= 0; i<nCubes; i++)
         {
             spawner.GetComponent<RectTransform>().anchoredPosition += singleSpace;
+
+            
+
+            
+
 
             if(divisionsPerCube != 1)
             {
                 for (int j = 0; j < divisionsPerCube; j++)
                 {
-                    instantiatedObjects.Add(Instantiate(prefab, spawner.GetComponent<Transform>().position, prefab.GetComponent<Transform>().rotation, canvasParent));
+                    int blockType = random.Next(0, 14);
+
+                    instantiatedObjects.Add(Instantiate(prefabs[blockType], spawner.GetComponent<Transform>().position, prefabs[blockType].GetComponent<Transform>().rotation, canvasParent));
 
                     spawner.GetComponent<RectTransform>().anchoredPosition += height;
                 }
@@ -99,23 +113,15 @@ public class GameObjectSpawner : MonoBehaviour
             }
             else
             {
-                //creates new sorting layer
-                //solved at runtime, affects editor properties that cannot be stored after execution
-                /*SerializedObject tagsAndLayersManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
-                SerializedProperty sortingLayersProp = tagsAndLayersManager.FindProperty("m_SortingLayers");
-                sortingLayersProp.InsertArrayElementAtIndex(sortingLayersProp.arraySize);
-                var newlayer = sortingLayersProp.GetArrayElementAtIndex(sortingLayersProp.arraySize - 1);
-                newlayer.FindPropertyRelative("uniqueID").intValue = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
-                newlayer.FindPropertyRelative("name").stringValue = "my new layer";
-                tagsAndLayersManager.ApplyModifiedProperties();*/
+                
 
-                instantiatedObjects.Add(Instantiate(prefab, spawner.GetComponent<Transform>().position, prefab.GetComponent<Transform>().rotation, canvasParent));
+                int blockType = random.Next(0, 14);
+
+                instantiatedObjects.Add(Instantiate(prefabs[blockType], spawner.GetComponent<Transform>().position, prefabs[blockType].GetComponent<Transform>().rotation, canvasParent));
 
                 GameObject blockGameobject =instantiatedObjects[instantiatedObjects.Count - 1].GetComponent<Transform>().Find("block").gameObject;
 
-                
-
-                //blockGameobject.GetComponent<SpriteRenderer>().sortingLayerName = newlayer.name.ToString();
+              
             }
 
             

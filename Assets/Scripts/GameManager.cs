@@ -277,8 +277,8 @@ public class GameManager : MonoBehaviour
 
     public void TimeDivision(int beatLength)
     {
-        /*try
-        {*/
+        try
+        {
             //call from custom time
             if (beatLength == -1)
             {
@@ -291,11 +291,11 @@ public class GameManager : MonoBehaviour
             BPM.BeatLength = beatLength;
 
             RebuildBlockMap();
-        /*}
+        }
         catch(Exception ex)
         {
             ThrowError(ex);
-        }*/
+        }
         
     }
 

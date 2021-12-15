@@ -608,7 +608,21 @@ MonoBehaviour:
   high: {fileID: 1200349846}
   canvasParent: {fileID: 2124164229}
   spawner: {fileID: 1795412729}
-  prefab: {fileID: 2410466676235636009, guid: eb1a8719814224f7b88d2fd37f12d202, type: 3}
+  prefabs:
+  - {fileID: 6519127986363839525, guid: 6ab43bd6d2e9346b5b1abea329b155d2, type: 3}
+  - {fileID: 5710611543087254863, guid: 72ff96ece8a7a477b83297ef3a5fc5e1, type: 3}
+  - {fileID: 7115837181625763277, guid: 8126e30b6788e458a9f06e275447c2f3, type: 3}
+  - {fileID: 8817021553749024234, guid: 0eea3ae6b29a449f283a4d68c08cef78, type: 3}
+  - {fileID: 5313862276925434490, guid: b3a1ccb3462ff4088a54e302c7a602fe, type: 3}
+  - {fileID: 4019807165724263655, guid: 62529eca8f2224bcd91c31f23de89849, type: 3}
+  - {fileID: 9095191453720911051, guid: 61e5390d2bc414c7bac5d392d8f346e1, type: 3}
+  - {fileID: 6813188085233649996, guid: 17dbd0051d2d44855844bfe4ff6e9813, type: 3}
+  - {fileID: 168149045045668945, guid: b32831bea5209408e8967aeddb33c813, type: 3}
+  - {fileID: 4551811912871842288, guid: e59181e09b1274324bd94d338b099012, type: 3}
+  - {fileID: 3125454241304978525, guid: 6fbc0e39500834c89824adcae59a0422, type: 3}
+  - {fileID: 3936504013160381547, guid: f154f36b145394b9e8fb8bc9c0d87f34, type: 3}
+  - {fileID: 9072399304251119782, guid: 0925513f4315949eea3c0be2c080bf15, type: 3}
+  - {fileID: 4287422853429589026, guid: 6d38d41bc65b24b9ab3bf86676e56ec2, type: 3}
 --- !u!4 &159878027
 Transform:
   m_ObjectHideFlags: 0
@@ -3477,7 +3491,7 @@ GameObject:
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &532074903
 Transform:
   m_ObjectHideFlags: 0
@@ -6332,7 +6346,7 @@ GameObject:
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1230443862
 Transform:
   m_ObjectHideFlags: 0
@@ -7581,7 +7595,7 @@ GameObject:
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1473438164
 Transform:
   m_ObjectHideFlags: 0
@@ -7687,7 +7701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1496769442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11267,12 +11281,10 @@ MonoBehaviour:
   - {fileID: 532074903}
   - {fileID: 1230443862}
   - {fileID: 1473438164}
-  quarter: {fileID: 0}
-  eigth: {fileID: 0}
-  sixteeth: {fileID: 0}
   errorText: {fileID: 1956440932}
   errorTextAnim: {fileID: 1956440934}
   spawner: {fileID: 159878026}
+  luciBlocchi: []
 --- !u!114 &2124164232
 MonoBehaviour:
   m_ObjectHideFlags: 0
