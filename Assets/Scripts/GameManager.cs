@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
       
         BPM.BeatLength = 4;
         BPM.Divisor = 1;
+       
         lightCounter = 0;
         BPM.ResetCounters();
         RebuildBlockMap();
@@ -212,7 +213,7 @@ public class GameManager : MonoBehaviour
 
             PerformShutdown();
 
-            ResetCountersLights();
+           
         }
         catch(Exception ex)
         {
@@ -253,7 +254,21 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            BPM.Divisor = division;
+            if (division < 1)
+            {
+                BPM.Divisor = 1;
+                soundPlayer.MeasuresSmallerThan1 = true;
+                soundPlayer.CountTickEvery = 2;
+            }
+            else
+            {
+                soundPlayer.MeasuresSmallerThan1 = false;
+
+                BPM.Divisor = division;
+
+            }
+
+
             if (division == 1)
             {
                 soundPlayer.Standard = true;
@@ -265,7 +280,10 @@ public class GameManager : MonoBehaviour
 
             BPM.ResetCounters();
             RebuildBlockMap();
+            PerformShutdown();
+            lightCounter = 0;
             soundPlayer.counterTickSub = 0;
+          
         }
         catch(Exception ex)
         {
@@ -289,23 +307,16 @@ public class GameManager : MonoBehaviour
             }
 
             BPM.BeatLength = beatLength;
-
+            lightCounter = 0;
+            BPM.ResetCounters();
             RebuildBlockMap();
+            PerformShutdown();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             ThrowError(ex);
         }
-        
-    }
-
-
-
-    //resets counters of all the blocks in the scene
-    private void ResetCountersLights()
-    {
-        
-    }
+    } 
 
     
 
@@ -313,7 +324,10 @@ public class GameManager : MonoBehaviour
     //shuts down every light in the scene
     private void PerformShutdown()
     {
-        
+        foreach(GameObject g in luciBlocchi)
+        {
+            g.SetActive(false);
+        }
     }
 
     #endregion

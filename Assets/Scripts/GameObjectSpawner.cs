@@ -104,7 +104,27 @@ public class GameObjectSpawner : MonoBehaviour
 
                     instantiatedObjects.Add(Instantiate(prefabs[blockType], spawner.GetComponent<Transform>().position, prefabs[blockType].GetComponent<Transform>().rotation, canvasParent));
 
+                    
+                    
+
+                    if (j >= 1)
+                    {
+                        
+                        if (instantiatedObjects[instantiatedObjects.Count - 1].name == instantiatedObjects[instantiatedObjects.Count - 2].name)
+                        {
+                            
+                            Destroy(instantiatedObjects[instantiatedObjects.Count - 1]);
+                            instantiatedObjects.Remove(instantiatedObjects[instantiatedObjects.Count - 1]);
+                            spawner.GetComponent<RectTransform>().anchoredPosition -= height;
+                            
+                            j--;
+                        }
+                        
+                    }
+
                     spawner.GetComponent<RectTransform>().anchoredPosition += height;
+
+
                 }
 
 
@@ -119,7 +139,24 @@ public class GameObjectSpawner : MonoBehaviour
 
                 instantiatedObjects.Add(Instantiate(prefabs[blockType], spawner.GetComponent<Transform>().position, prefabs[blockType].GetComponent<Transform>().rotation, canvasParent));
 
-                GameObject blockGameobject =instantiatedObjects[instantiatedObjects.Count - 1].GetComponent<Transform>().Find("block").gameObject;
+                
+
+                if (i >= 1)
+                {
+                    if (instantiatedObjects[instantiatedObjects.Count - 1].name == instantiatedObjects[instantiatedObjects.Count - 2].name)
+                    {
+                        
+                        Destroy(instantiatedObjects[instantiatedObjects.Count - 1]);
+                        instantiatedObjects.Remove(instantiatedObjects[instantiatedObjects.Count - 1]);
+                        spawner.GetComponent<RectTransform>().anchoredPosition -= singleSpace;
+
+                        i--;
+                    }
+                }
+
+                
+
+                //GameObject blockGameobject =instantiatedObjects[instantiatedObjects.Count - 1].GetComponent<Transform>().Find("block").gameObject;
 
               
             }

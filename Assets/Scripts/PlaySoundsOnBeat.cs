@@ -16,6 +16,11 @@ public class PlaySoundsOnBeat : MonoBehaviour
     //specifies whether we are using the standard subdivision (1/4) or not
     public bool Standard { set; get; }
 
+
+    public bool MeasuresSmallerThan1 { set; get; }
+    public int CountTickEvery { set; get; }
+    public int counterTickMul;
+
     //counting the beat subdivisions, used to determine when to play sounds
     public int counterTickSub;
      
@@ -24,8 +29,9 @@ public class PlaySoundsOnBeat : MonoBehaviour
     {
         Power = false;
         Standard = true;
-        
+        MeasuresSmallerThan1 = false;
         counterTickSub = 0;
+        counterTickMul = 0;
     }
 
     // Update is called once per frame
@@ -47,6 +53,22 @@ public class PlaySoundsOnBeat : MonoBehaviour
 
                     tick.Play();
                 }
+            }
+            else if (MeasuresSmallerThan1)
+            {
+                if(BPM.BeatFull && counterTickMul == 0)
+                {
+                    tick.Play();
+                }
+
+
+                counterTickMul++;
+
+                if (counterTickMul >= CountTickEvery)
+                {
+                    counterTickMul = 0;
+                }
+                
             }
             else
             {

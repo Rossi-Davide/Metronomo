@@ -28,7 +28,7 @@ public class BPM : MonoBehaviour
 
             _beatInterval = secondsInAMinute / value;
 
-            
+            _beatSubInterval = _beatInterval / Divisor;
 
             _bpmSystem = value;
         }
@@ -140,7 +140,10 @@ public class BPM : MonoBehaviour
         }
     }
 
-
+    private void Start()
+    {
+        Bpm = 200;
+    }
 
 
     // Update is called once per frame
