@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            
+            PerformShutdown();
             //No parameter ever specified
             if (bpmMetronome == -1)
             {

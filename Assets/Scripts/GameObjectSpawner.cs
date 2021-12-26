@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEditor;
+using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class GameObjectSpawner : MonoBehaviour
 {
@@ -81,6 +84,15 @@ public class GameObjectSpawner : MonoBehaviour
             Vector3 blockChildNewScale = new Vector3(1 / divisionsPerCube, blockChild.localScale.y, blockChild.localScale.z);
 
             blockChild.localScale = blockChildNewScale;
+
+            if(divisionsPerCube >= 8)
+            {
+                Transform lightT = prefabTransform.Find("blockLight");
+
+                Light2D light = lightT.GetComponent<Light2D>();
+
+                light.pointLightOuterRadius = 2f;
+            }
         }
 
 
@@ -156,7 +168,7 @@ public class GameObjectSpawner : MonoBehaviour
 
                 
 
-                //GameObject blockGameobject =instantiatedObjects[instantiatedObjects.Count - 1].GetComponent<Transform>().Find("block").gameObject;
+                
 
               
             }
