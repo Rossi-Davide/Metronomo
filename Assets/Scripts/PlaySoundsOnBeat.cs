@@ -19,7 +19,7 @@ public class PlaySoundsOnBeat : MonoBehaviour
 
     public bool MeasuresSmallerThan1 { set; get; }
     public int CountTickEvery { set; get; }
-    public int counterTickMul;
+    public int counterTickMul { set; get; }
 
     //counting the beat subdivisions, used to determine when to play sounds
     public int counterTickSub;
@@ -62,12 +62,16 @@ public class PlaySoundsOnBeat : MonoBehaviour
                 }
 
 
-                counterTickMul++;
-
-                if (counterTickMul >= CountTickEvery)
+                if (BPM.BeatFull)
                 {
-                    counterTickMul = 0;
+                    counterTickMul++;
+
+                    if (counterTickMul >= CountTickEvery)
+                    {
+                        counterTickMul = 0;
+                    }
                 }
+               
                 
             }
             else

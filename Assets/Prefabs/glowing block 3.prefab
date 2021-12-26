@@ -46,7 +46,7 @@ MonoBehaviour:
   m_LightType: 1
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.29411772, g: 0.99215686, b: 0.90883493, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 4.33
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000214576abb3e90d09b57e4007c1fabf330dfcb0ffd9beea369b4c8c8efd9e6ac05d1dd4655b3f8d23c5aae8ee71b14a604b0ffd64534735253511055b11e716c84dd4351e8b03e3853d8186c041f14cc6
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0, g: 0.5377358, b: 0.40953383, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 9.87
   m_LightVolumeOpacity: 0.039
   m_ApplyToSortingLayers: 0dfcb0ff
@@ -203,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 7115837182711061247}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0.025, z: 0}
-  m_LocalScale: {x: 0.125, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7115837181625763278}
   m_RootOrder: 0

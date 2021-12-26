@@ -77,7 +77,38 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            else
+            else if (soundPlayer.MeasuresSmallerThan1)
+            {
+                if (BPM.BeatFull)
+                {
+                    if (soundPlayer.CountTickEvery == 2)
+                    {
+                        if (soundPlayer.counterTickMul % 2 == 0)
+                        {
+                            PerformShutdown();
+                        }
+                    }
+                    else
+                    {
+                        if (soundPlayer.counterTickMul % 4 == 0)
+                        {
+
+                            PerformShutdown();
+                        }
+                    }
+
+                    luciBlocchi[lightCounter].SetActive(true);
+
+                    
+
+                    lightCounter++;
+
+                    if (lightCounter == luciBlocchi.Length)
+                    {
+                        lightCounter = 0;
+                    }
+                }
+            }else
             {
                 if (BPM.BeatSubMultiple)
                 {
@@ -258,11 +289,23 @@ public class GameManager : MonoBehaviour
             {
                 BPM.Divisor = 1;
                 soundPlayer.MeasuresSmallerThan1 = true;
-                soundPlayer.CountTickEvery = 2;
+                soundPlayer.Standard = false;
+
+                if (division == 0.5f)
+                {
+                    soundPlayer.CountTickEvery = 2;
+                }
+                else
+                {
+                    soundPlayer.CountTickEvery = 4;
+                }
+                
+                
             }
             else
             {
                 soundPlayer.MeasuresSmallerThan1 = false;
+                soundPlayer.Standard = true;
 
                 BPM.Divisor = division;
 
